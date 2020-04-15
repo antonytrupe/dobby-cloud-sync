@@ -3,13 +3,15 @@ const readline = require('readline');
 const {google} = require('googleapis');
 
 // If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
 const TOKEN_PATH = 'token.json';
 
 // Load client secrets from a local file.
+//quickstart-1586918192065-38691cb16493.json
+//credentials.json
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Sheets API.
@@ -73,9 +75,16 @@ function getNewToken(oAuth2Client, callback) {
  */
 function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.get({
+  sheets.spreadsheets.values.append({
     spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
+    range: 'Sheet1',
+    valueInputOption: 'RAW',
+    insertDataOption: 'INSERT_ROWS',
+    resource: {
+      values: [
+        [new Date().toISOString(), "Some value", "Another value"]
+        ],
+      }
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
     const rows = res.data.values;
