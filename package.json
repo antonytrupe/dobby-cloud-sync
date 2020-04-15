@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/antonytrupe/house-stats-sync/issues"
   },
-  "homepage": "https://github.com/antonytrupe/house-stats-sync#readme"
+  "homepage": "https://github.com/antonytrupe/house-stats-sync#readme",
+  "dependencies": {
+    "googleapis": "^39.2.0"
+  }
 }
