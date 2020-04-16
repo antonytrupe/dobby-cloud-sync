@@ -82,7 +82,7 @@ function listMajors(auth) {
     insertDataOption: 'INSERT_ROWS',
     resource: {
       values: [
-        [new Date().toISOString(), "Some value", "Another value"]
+        [ "living room", "tempC","",new Date().toISOString()]
         ],
       }
   }, (err, res) => {
