@@ -76,7 +76,7 @@ function getNewToken(oAuth2Client, callback) {
 function listMajors(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   sheets.spreadsheets.values.append({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+    spreadsheetId: '1acu7rfbNLEv9sreJ-gXMbB8u1HWdCnUJbjQgZ7K4GRM',
     range: 'Sheet1',
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS',
@@ -87,15 +87,6 @@ function listMajors(auth) {
       }
   }, (err, res) => {
     if (err) return console.log('The API returned an error: ' + err);
-    const rows = res.data.values;
-    if (rows.length) {
-      console.log('Name, Major:');
-      // Print columns A and E, which correspond to indices 0 and 4.
-      rows.map((row) => {
-        console.log(`${row[0]}, ${row[4]}`);
-      });
-    } else {
-      console.log('No data found.');
-    }
+    
   });
 }
