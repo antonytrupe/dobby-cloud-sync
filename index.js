@@ -1,5 +1,5 @@
 const config = require('config');
-const sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3');
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -78,6 +78,7 @@ function getNewToken(oAuth2Client, callback) {
 function pushData(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   //TODO look up the data that hasn't been pushed yet
+  let db = new sqlite3.Database(config.get('spreadsheetId'),sqlite3.OPEN_READONLY);
   sheets.spreadsheets.values.append({
     spreadsheetId: config.get('spreadsheetId'),
     range: 'Sheet1',
