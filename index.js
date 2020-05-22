@@ -79,6 +79,7 @@ function pushData(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   //TODO look up the data that hasn't been pushed yet
   let db = new sqlite3.Database(config.get('spreadsheetId'),sqlite3.OPEN_READONLY);
+//TODO 
   sheets.spreadsheets.values.append({
     spreadsheetId: config.get('spreadsheetId'),
     range: 'Sheet1',
