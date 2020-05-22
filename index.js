@@ -1,3 +1,5 @@
+const config = require('config');
+const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
@@ -77,7 +79,7 @@ function pushData(auth) {
   const sheets = google.sheets({version: 'v4', auth});
   //TODO look up the data that hasn't been pushed yet
   sheets.spreadsheets.values.append({
-    spreadsheetId: '1acu7rfbNLEv9sreJ-gXMbB8u1HWdCnUJbjQgZ7K4GRM',
+    spreadsheetId: config.get('spreadsheetId'),
     range: 'Sheet1',
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS',
